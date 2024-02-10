@@ -146,8 +146,8 @@ def dysplay_keyboard(img, keys):
 
     color_board = (255, 250, 100)
     for key in keys:
-		cv2.putText(img,   key[0], key[1], cv2.FONT_HERSHEY_DUPLEX, 1, (255, 0, 100), thickness = 3)
-		cv2.rectangle(img, key[2], key[3], color_board, thickness = 4)
+        cv2.putText(img, key[0], key[1], cv2.FONT_HERSHEY_DUPLEX, 1, (255, 0, 100), thickness = 3)
+        cv2.rectangle(img, key[2], key[3], color_board, thickness = 4)
 # --------------------------------------------------
 
 # -----   check key on keyboard and take input
