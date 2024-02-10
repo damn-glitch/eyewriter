@@ -131,7 +131,7 @@ while(True):
 
     # make & display on frame the keyboard
     keyboard_page = make_black_page(size = size_screen)
-    dysplay_keyboard(img = keyboard_page, keys = key_points)
+    display_keyboard(img = keyboard_page, keys = key_points)
     text_page = make_white_page(size = (200, 800))
 
     gray_scale_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # gray-scale to work with
@@ -172,7 +172,7 @@ while(True):
             pressed_key = identify_key(key_points = key_points, coordinate_X = pupil_on_keyboard[1], coordinate_Y = pupil_on_keyboard[0])
 
             if pressed_key:
-                if pressed_key=='del':
+                if pressed_key == 'del':
                     string_to_write = string_to_write[: -1]
                 else:
                     string_to_write = string_to_write + pressed_key
@@ -185,12 +185,12 @@ while(True):
 
     # visualize windows
     show_window('projection', keyboard_page)
-    show_window('frame', cv2.resize(frame, (int(frame.shape[1] *resize_frame), int(frame.shape[0] *resize_frame))))
-    show_window('cut_frame', cv2.resize(cut_frame, (int(cut_frame.shape[1] *resize_eye_frame), int(cut_frame.shape[0] *resize_eye_frame))))
+    show_window('frame', cv2.resize(frame, (int(frame.shape[1] * resize_frame), int(frame.shape[0] * resize_frame))))
+    show_window('cut_frame', cv2.resize(cut_frame, (int(cut_frame.shape[1] * resize_eye_frame), int(cut_frame.shape[0] * resize_eye_frame))))
     show_window('text_page', text_page)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 # -------------------------------------------------------------------
 
-shut_off(camera) # Shut camera / windows off
+shut_off(camera)  # Shut camera / windows off

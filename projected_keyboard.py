@@ -12,7 +12,7 @@ def get_keyboard(width_keyboard , height_keyboard, offset_keyboard):
     column = np.arange(0, width_keyboard, width_keyboard/ 10, dtype=int) + offset_keyboard[0]
     row = np.arange(0, height_keyboard, height_keyboard/ 5, dtype=int) + offset_keyboard[1]
 
-    box = int(width_keyboard / 10)
+    box = int(width_keyboard / 20)
 
     color_board = (250, 0, 100)
 
