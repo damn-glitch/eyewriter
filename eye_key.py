@@ -192,7 +192,7 @@ while True:
                 (20, 70), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 5)
 
     # visualize windows
-    show_window('projection', keyboard_page, (1200, 800))
+    show_window('projection', keyboard_page)
     show_window('frame', cv2.resize(frame, (int(frame.shape[1] * resize_frame), int(frame.shape[0] * resize_frame))))
     show_window('cut_frame', cv2.resize(cut_frame, (
         int(cut_frame.shape[1] * resize_eye_frame), int(cut_frame.shape[0] * resize_eye_frame))))
