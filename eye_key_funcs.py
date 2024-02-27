@@ -19,8 +19,10 @@ dict_color = {'green': (0, 255, 0),
 
 
 # -----   Initialize camera
-def init_camera(camera_ID):
-    camera = cv2.VideoCapture(0)
+def init_camera(camera_ID, resolution=(1280, 720)):  # Specify your desired resolution
+    camera = cv2.VideoCapture(camera_ID)
+    camera.set(3, resolution[0])  # Width
+    camera.set(4, resolution[1])  # Height
     return camera
 
 
@@ -80,6 +82,9 @@ def display_box_around_face(img, box, color, size):
 def half_point(p1, p2):
     return int((p1.x + p2.x) / 2), int((p1.y + p2.y) / 2)
 
+
+def half_point_x(p1, p2):
+    return int((p1.x + p2.x) / 2)
 
 # --------------------------------------------------
 
@@ -184,15 +189,16 @@ def display_keyboard(img, keys):
 
 # -----   check key on keyboard and take input
 def identify_key(key_points, coordinate_X, coordinate_Y):
-    pressed_key = False
+    pressed_key = None
 
     for key in range(0, len(key_points)):
-        condition_1 = np.mean(np.array([coordinate_Y, coordinate_X]) > np.array(key_points[key][2]))
-        condition_2 = np.mean(np.array([coordinate_Y, coordinate_X]) < np.array(key_points[key][3]))
+        condition_1 = key_points[key][2][0] < coordinate_X < key_points[key][3][0]
+        condition_2 = key_points[key][2][1] < coordinate_Y < key_points[key][3][1]
 
-        if (int(condition_1 + condition_2) == 2):
+        if condition_1 and condition_2:
             pressed_key = key_points[key][0]
             break
+
     return pressed_key
 
 
